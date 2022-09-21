@@ -19,4 +19,4 @@ const musicSchema = new mongoose.Schema({
   },
 });
 //epalido de 'musicSchema' para 'music
-module.export = mongoose.model("Music", musicSchema);
+module.exports = mongoose.model("Music", musicSchema);
