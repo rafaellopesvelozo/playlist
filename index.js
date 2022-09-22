@@ -22,15 +22,18 @@ app.use(express.urlencoded());
 
 connectToDb();
 
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", async (req, res) => {
+  //trazer do banco de dados mongodb um array de objetos
+  const playList = await Music.find();
+
+  //enviar esses objetos para a tela
+  res.render("index", { playList });
 });
 
 //rota p enviar usuário para admin
 app.get("/admin", (req, res) => {
   res.render("admin");
 });
-
 
 //rota de cadastro
 app.post("/create", async (req, res) => {
@@ -39,8 +42,7 @@ app.post("/create", async (req, res) => {
 
   //criar a partir de music, em models
   await Music.create(music);
-  res.redirect('/')
- 
+  res.redirect("/");
 });
 app.listen(port, () =>
   console.log(`servidor executado em http://localhost:${port}`)
