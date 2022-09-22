@@ -7,67 +7,196 @@
   list-style-type: none;
   word-wrap: break-word;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-body{
-    background-color:  #121214;
-    color: #ffff;
+body {
+  background-color: #121214;
+  color: #ffff;
 }
-nav ul{
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
+nav ul {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
 }
-nav ul li img{
-    width: 20%;
+nav ul li img {
+  width: 20%;
 }
-nav ul li i{
-    font-size: 1.5rem;
+nav ul li i {
+  font-size: 1.5rem;
 }
-nav a{
-    color: #fff;
+nav a {
+  color: #fff;
 }
-section#player{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding-bottom: 10rem;
+section#player {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-bottom: 10rem;
 }
-section#player h1{
-    width: 100%;
-    text-align: center;
-    padding: 0 0 5rem 0 ;
-    font-size: 3rem;
-    font-weight: 100;
+section#player h1 {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0 5rem 0;
+  font-size: 3rem;
+  font-weight: 100;
 }
-section#player div{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+section#player div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-section#player div img#currentImg{
-    width: 25rem;
-    height: 25rem;
+section#player div img#currentImg {
+  width: 25rem;
+  height: 25rem;
 }
-section#player div h2#currentname{
-    width: 100%;
-    text-align: center;
-    font-size: 2rem;
-    padding: 1rem 0 0.5rem 0;
+section#player div h2#currentname {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem 0 0.5rem 0;
 }
-section#player table{
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 50rem;
+section#player table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 50rem;
 }
 section#player table th,
- td{
-    padding: 1rem;
-    border-bottom:  1px solid #ddd;
-    text-align: left;
+td {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
 }
-section#player table td img{
-    width: 3rem;
+section#player table td img {
+  width: 3rem;
+}
+
+section#add {
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+section#add h2 {
+  width: 100%;
+  padding: 0 0 5rem 0;
+  font-size: 3rem;
+  font-weight: 100;
+  text-align: center;
+  margin: 0.3rem 1rem 1rem 1rem;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+}
+form input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin: 0.3rem 1rem 1rem 1rem;
+  font-size: 1.25rem;
+  border: solid 1px #0071a5;
+}
+form label {
+  margin: 0rem 1rem 0 1rem;
+  font-size: 1.2rem;
+  color: #fff;
+}
+form button {
+  cursor: pointer;
+  border: solid 2px #00a53f;
+  border-radius: 0.3rem;
+  padding: 0.6rem;
+  margin: 0rem 1rem 0 1rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  color: #00a53f;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+}
+form button:hover {
+  background-color: #00a53f;
+  color: #fff;
+}
+section#player h2 {
+  margin-top: 4rem;
+  width: 100%;
+  text-align: center;
+  padding: 0rem 0 5rem 0;
+  font-size: 3rem;
+  font-weight: 100;
+}
+td#actions a {
+  color: #fff;
+  border: solid 1px #fff;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  transition: all 0.2s ease-in-out;
+}
+
+a#edit {
+  margin-right: 1rem;
+}
+a#edit:hover {
+  background-color: #0044ff;
+  border: 1px solid #0044ff;
+}
+a#delete:hover {
+  background-color: #b93b3b;
+  border: 1px solid #b93b3b;
+}
+
+section#modal {
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #00000090;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section#modal div#card {
+  width: 50%;
+  position: relative;
+  background-color: #202024;
+  border-radius: 0.5rem;
+}
+
+section#modal div#card h2 {
+  margin: 0;
+  color: #ffffff;
+  padding: 2rem;
+}
+section#modal div#card a#close-modal {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  font-size: 1.4rem;
+  color: #ffffff;
+  padding: 2rem;
+  transition: all 0.2s ease-in-out;
+}
+section#modal div#card a#close-modal:hover {
+  color: #ff0000;
+}
+section#modal div#card hr {
+  width: 90%;
+  margin: 0 auto;
+}
+form#form-modal{
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0;
 }

@@ -1,34 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--css da pasta public-->
     <link rel="stylesheet" href="/style.css">
+    <!--icons bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>Playlist</title>
 </head>
+
 <body>
-    <h1>Cadastre uma nova música</h1>
-    <form action="/create" method="post">
-        <label for="name">Nome:</label>
-        <!--name igual ao 'model schema'-->
-        <input type="text" name="name" id="name">
+    <nav>
+        <ul>
+            <li>
+                <a href="/"><img src="/img/logoblue.png" alt=""></a>
+            </li>
+            <li>
+                <a href="/"><i class="bi bi-box-arrow-right"></i></a>
+            </li>
+        </ul>
+    </nav>
 
-        <label for="author">Autor:</label>
-        <!--name igual ao 'model schema'-->
-        <input type="text" name="author" id="author">
+    <section id="add">
+        <h2>Cadastre uma nova música</h2>
+        <form action="/create" method="post">
+            <label for="name">Nome:</label>
+            <!--name igual ao 'model schema'-->
+            <input type="text" name="name" id="name">
 
-        <label for="linkImage">Link da imagem:</label>
-        <!--name igual ao 'model schema'-->
-        <input type="text" name="linkImage" id="linkImage">
+            <label for="author">Autor:</label>
+            <!--name igual ao 'model schema'-->
+            <input type="text" name="author" id="author">
 
-        <label for="linkMusic">Link da música:</label>
-        <!--name igual ao 'model schema'-->
-        <input type="text" name="linkMusic" id="linkMusic">
+            <label for="linkImage">Link da imagem:</label>
+            <!--name igual ao 'model schema'-->
+            <input type="text" name="linkImage" id="linkImage">
+
+            <label for="linkMusic">Link da música:</label>
+            <!--name igual ao 'model schema'-->
+            <input type="text" name="linkMusic" id="linkMusic">
 
 
-        <button type='submit'>Cadastrat</button>
-    </form>
+            <button type='submit'>Cadastrar</button>
+        </form>
+    </section>
+
+    <section id="player">
+        <h2>Gerenciar músicas</h2>
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nome</th>
+                        <th>Artista</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% playList.forEach((music)=>{%>
+                        <tr class="musics">
+                            <td><img src="<%= music.linkImage %>" alt="Imagem da música">
+                            </td>
+                            <td>
+                                <%= music.name %>
+                            </td>
+                            <td>
+                                <%= music.author %>
+                            </td>
+                            <td id="actions">
+                                <!--passando valor da musica "ID" para edição-->
+                                <a id="edit" href="/by/<%= music._id %>">Editar</a>
+                                <a id="delete" href="">Apagar</a>
+                            </td>
+                        </tr>
+                        <% })%>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <%if(music != null){%>
+    <section id="modal">
+
+        <div id="card">
+            <a id="close-modal" href="/admin"><i class="bi bi-x-lg"></i></a>
+            <h2>Editar Música
+            </h2>
+            <hr>
+            <!--enviar 'id' da musica para a rota update'-->
+            <form id="form-modal" action="/update/<%= music._id %>" method="post">
+                <label for="name">Nome:</label>
+                <!--name igual ao 'model schema'-->
+                <input type="text" name="name" id="name" value=" <%= music.name %>">
+
+                <label for="author">Autor:</label>
+                <!--name igual ao 'model schema'-->
+                <input type="text" name="author" id="author" value="<%= music.author %>">
+
+                <label for="linkImage">Link da imagem:</label>
+                <!--name igual ao 'model schema'-->
+                <input type="text" name="linkImage" id="linkImage" value="<%= music.linkImage %>">
+
+                <label for="linkMusic">Link da música:</label>
+                <!--name igual ao 'model schema'-->
+                <input type="text" name="linkMusic" id="linkMusic" value="<%= music.linkMusic %>">
+
+
+                <button type='submit'>Atualizar</button>
+            </form>
+        </div>
+
+    </section>
+    <%}%>
+
+
 </body>
+
 </html>
