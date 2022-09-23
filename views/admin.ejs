@@ -75,8 +75,8 @@
                             </td>
                             <td id="actions">
                                 <!--passando valor da musica "ID" para edição-->
-                                <a id="edit" href="/by/<%= music._id %>">Editar</a>
-                                <a id="delete" href="">Apagar</a>
+                                <a id="edit" href="/by/<%= music._id %>/edit">Editar</a>
+                                <a id="delete" href="/by/<%= music._id %>/delete">Apagar</a>
                             </td>
                         </tr>
                         <% })%>
@@ -85,39 +85,62 @@
         </div>
     </section>
 
-    <%if(music != null){%>
-    <section id="modal">
+    <%if(music !=null){%>
+        <section id="modal">
 
-        <div id="card">
-            <a id="close-modal" href="/admin"><i class="bi bi-x-lg"></i></a>
-            <h2>Editar Música
-            </h2>
-            <hr>
-            <!--enviar 'id' da musica para a rota update'-->
-            <form id="form-modal" action="/update/<%= music._id %>" method="post">
-                <label for="name">Nome:</label>
-                <!--name igual ao 'model schema'-->
-                <input type="text" name="name" id="name" value=" <%= music.name %>">
+            <div id="card">
+                <a id="close-modal" href="/admin"><i class="bi bi-x-lg"></i></a>
+                <h2>Editar Música
+                </h2>
+                <hr>
+                <!--enviar 'id' da musica para a rota update'-->
+                <form id="form-modal" action="/update/<%= music._id %>/edit" method="post">
+                    <label for="name">Nome:</label>
+                    <!--name igual ao 'model schema'-->
+                    <input type="text" name="name" id="name" value=" <%= music.name %>">
 
-                <label for="author">Autor:</label>
-                <!--name igual ao 'model schema'-->
-                <input type="text" name="author" id="author" value="<%= music.author %>">
+                    <label for="author">Autor:</label>
+                    <!--name igual ao 'model schema'-->
+                    <input type="text" name="author" id="author" value="<%= music.author %>">
 
-                <label for="linkImage">Link da imagem:</label>
-                <!--name igual ao 'model schema'-->
-                <input type="text" name="linkImage" id="linkImage" value="<%= music.linkImage %>">
+                    <label for="linkImage">Link da imagem:</label>
+                    <!--name igual ao 'model schema'-->
+                    <input type="text" name="linkImage" id="linkImage" value="<%= music.linkImage %>">
 
-                <label for="linkMusic">Link da música:</label>
-                <!--name igual ao 'model schema'-->
-                <input type="text" name="linkMusic" id="linkMusic" value="<%= music.linkMusic %>">
+                    <label for="linkMusic">Link da música:</label>
+                    <!--name igual ao 'model schema'-->
+                    <input type="text" name="linkMusic" id="linkMusic" value="<%= music.linkMusic %>">
 
 
-                <button type='submit'>Atualizar</button>
-            </form>
-        </div>
+                    <button type='submit'>Atualizar</button>
+                </form>
+            </div>
 
-    </section>
-    <%}%>
+        </section>
+        <%}%>
+
+            <%if(musicDel !=null){%>
+                <section id="modal">
+
+                    <div id="card">
+                        <a id="close-modal" href="/admin"><i class="bi bi-x-lg"></i></a>
+                        <h2>
+                            Confirmar
+                        </h2>
+                        <hr>
+                        <p>
+                            Deseja realmente apagar a Música <%= musicDel.name %>
+                        </p>
+                        <div id="btn-confirm">
+                            <a id="no" href="/admin">Não</a>
+                            <a id="yes" href="/delete/<%= musicDel._id %>">Sim</a>
+                        </div>
+
+                    </div>
+
+                </section>
+                <%}%>
+
 
 
 </body>
