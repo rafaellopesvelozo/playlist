@@ -8,7 +8,7 @@
 <br>
 <p align="center"><b>MongoDB:</b> Banco de dados.</p> 
 <p align="center"><b>Render Dashboard:</b> Deploy do projeto.</p>
-<p align="center"><b>Node.js:</b> interpretador de JavaScript.</p>
+<p align="center"><b>Node.js:</b> Interpretador de JavaScript.</p>
 <br>
 <hr>
 <p align="center"><b><i>DEPENDÊNCIAS:</i></b></p>
