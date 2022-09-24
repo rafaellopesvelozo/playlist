@@ -23,7 +23,7 @@
 
 <p >Link do projeto :
   
-  <a href="https://playlistmusicsforlearnandstudies.onrender.com">
+  <a href="https://playlistmusicsforlearnandstudies.onrender.com"  target="_blank">
     https://playlistmusicsforlearnandstudies.onrender.com
   </a>
  
