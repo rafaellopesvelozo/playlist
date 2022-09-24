@@ -48,7 +48,7 @@ controls.addEventListener("click", function (ev) {
     document.querySelector("#currentArtist").innerText = currentMusic.artist;
 
     //input do volume, em 100
-    document.querySelector("#volume").value = currentMusic.audio.volume * 100;
+    document.querySelector("#volume").value = currentMusic.audio.volume * 50;
 
     //progresso da musica
     const progressbar = document.querySelector("#progressbar");
