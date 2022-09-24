@@ -2,7 +2,7 @@
 <br>
 <h1 align="center">📈  Playlist</h1>  
 <p align="center">
-  <b>Projeto realizado para estudos, focado em seu funcionameto e contendo anotações para ter o melhor entendimento de como funciona as diversas tecnologias utilizadas !</b>
+  <b>Projeto realizado para fins de estudos, focado em seu funcionameto e contendo anotações para ter o melhor entendimento de como funciona as diversas tecnologias utilizadas !</b>
 </p>
 <br>
 <br>
