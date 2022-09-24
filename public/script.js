@@ -65,12 +65,15 @@ controls.addEventListener("click", function (ev) {
     //função converter duração de segundos para minutos
     textTotalDuration.innerText = secondsToMinutes(currentMusic.audio.duration);
 
-    //tempo atual da musica
-    textCurrentDuration.innerText = secondsToMinutes(
-      currentMusic.audio.currentTime
-    );
+    //monitorar a tempo atual da musica
+    currentMusic.audio.ontimeupdate = function () {
+      //tempo atual da musica
+      textCurrentDuration.innerText = secondsToMinutes(
+        currentMusic.audio.currentTime
+      );
 
-    progressbar.valueAsNumber = currentMusic.audio.currentTime;
+      progressbar.valueAsNumber = currentMusic.audio.currentTime;
+    };
   }
 
   //BOTAO DE PLAY DA MÚSICA
@@ -93,6 +96,27 @@ controls.addEventListener("click", function (ev) {
       currentMusic.audio.pause();
       isplay = false;
     }
+  }
+
+  //botao de mute
+  if (ev.target.id == "vol-icon") {
+    //se tiver true, quero que fique false ao click
+    currentMusic.audio.muted = !currentMusic.audio.muted;
+    if (currentMusic.audio.muted) {
+      ev.target.classList.replace("bi-volume-up-fill", "bi-volume-mute-fill");
+    } else {
+      ev.target.classList.replace("bi-volume-mute-fill", "bi-volume-up-fill");
+    }
+  }
+
+  //aumentar e diminuir volume 'range'
+  if (ev.target.id == "volume") {
+    currentMusic.audio.volume = ev.target.valueAsNumber / 100;
+  }
+
+  //aumentar e diminuir progresso da música ao arrastar/clicar
+  if (ev.target.id == "progressbar") {
+    currentMusic.audio.currentTime = ev.target.valueAsNumber;
   }
 });
 
