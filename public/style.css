@@ -31,9 +31,8 @@ nav a {
 section#player {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   flex-wrap: wrap;
-  align-items: center;
+  align-items:flex-start;
   padding-bottom: 10rem;
 }
 section#player h1 {
