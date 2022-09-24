@@ -96,6 +96,7 @@ controls.addEventListener("click", function (ev) {
       currentMusic.audio.pause();
       isplay = false;
     }
+    musicEnded()
   }
 
   //botao de mute
@@ -107,16 +108,68 @@ controls.addEventListener("click", function (ev) {
     } else {
       ev.target.classList.replace("bi-volume-mute-fill", "bi-volume-up-fill");
     }
+    musicEnded()
   }
 
   //aumentar e diminuir volume 'range'
   if (ev.target.id == "volume") {
     currentMusic.audio.volume = ev.target.valueAsNumber / 100;
+    musicEnded()
   }
 
   //aumentar e diminuir progresso da música ao arrastar/clicar
   if (ev.target.id == "progressbar") {
     currentMusic.audio.currentTime = ev.target.valueAsNumber;
+    musicEnded()
+  }
+
+  //botao next control
+  if (ev.target.id == "next-control") {
+    index++;
+
+    //se atimgoi máximo da lista
+    if (index == audios.length) {
+      index = 0;
+    }
+    currentMusic.audio.pause();
+    updateDataMusic();
+    currentMusic.audio.play();
+    btnPlay.classList.replace("bi-play-fill", "bi-pause-fill");
+    musicEnded();
+  }
+
+  //botao prev control
+  if (ev.target.id == "prev-control") {
+    index--;
+
+    if (index == -1) {
+      index = audios.length - 1;
+    }
+    currentMusic.audio.pause();
+    updateDataMusic();
+    currentMusic.audio.play();
+    btnPlay.classList.replace("bi-play-fill", "bi-pause-fill");
+    musicEnded();
+  }
+
+
+  //verificar se a musica acabou
+  //se acabou, passa para a próxima musica
+  //adicionar essa funçáo em todos os if, 
+  function musicEnded() {
+    currentMusic.audio.addEventListener("ended", function () {
+      //se audio acabar, próxima musica
+      index++;
+
+      //se atimgoi máximo da lista, volta p primeira
+      if (index == audios.length) {
+        index = 0;
+      }
+      currentMusic.audio.pause();
+      updateDataMusic();
+      currentMusic.audio.play();
+      btnPlay.classList.replace("bi-play-fill", "bi-pause-fill");
+    });
   }
 });
 
