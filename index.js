@@ -72,12 +72,11 @@ app.get("/by/:id/:action", async (req, res) => {
   if (action == "edit") {
     //renderizar playList e music
     res.render("admin", { playList, music, musicDel: null });
-  }else{
+  } else {
     //renderizar playList e music
     res.render("admin", { playList, music: null, musicDel: music });
   }
 });
-
 
 //rota update musica
 app.post("/update/:id", async (req, res) => {
@@ -92,7 +91,6 @@ app.post("/update/:id", async (req, res) => {
   // e depois fecha o modal como "null"
   res.redirect("/admin");
 });
-
 
 //rota p deletar
 app.get("/delete/:id", async (req, res) => {

@@ -85,7 +85,7 @@
         </div>
     </section>
 
-    <%if(music !=null){%>
+    <%if(music != null){%>
         <section id="modal">
 
             <div id="card">
@@ -94,7 +94,8 @@
                 </h2>
                 <hr>
                 <!--enviar 'id' da musica para a rota update'-->
-                <form id="form-modal" action="/update/<%= music._id %>/edit" method="post">
+                <form id="form-modal" method="post" action="/update/<%= music._id %>" >
+
                     <label for="name">Nome:</label>
                     <!--name igual ao 'model schema'-->
                     <input type="text" name="name" id="name" value=" <%= music.name %>">
@@ -110,7 +111,6 @@
                     <label for="linkMusic">Link da música:</label>
                     <!--name igual ao 'model schema'-->
                     <input type="text" name="linkMusic" id="linkMusic" value="<%= music.linkMusic %>">
-
 
                     <button type='submit'>Atualizar</button>
                 </form>
