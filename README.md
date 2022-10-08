@@ -12,7 +12,7 @@
 <br>
 <hr>
 <p align="center"><b><i>DEPENDÊNCIAS:</i></b></p>
-<p align="center"><b>nodemon:</b> Reinicialização automaticamente do servidor.</p>
+<p align="center"><b>nodemon:</b> Reinicialização automática do servidor.</p>
 <p align="center"><b>express:</b> Criação de "API".</p>
 <p align="center"><b>ejs:</b> Ajudar a mostrar página principal e colocar códigos JavaScript no HTML.</p>
 <p align="center"><b>mongoose:</b> Gerenciar o relacionamento entre dados.</p>
